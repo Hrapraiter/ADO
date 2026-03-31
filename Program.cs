@@ -12,34 +12,31 @@ namespace ADO
     {
         private const string movies_PV_522_connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_522;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
 
-        private static T_SQL movies_PV_522 = new T_SQL(new SqlConnection(movies_PV_522_connection_string));
+        private static Connector movies_PV_522 = new Connector(movies_PV_522_connection_string);
         
         static void Main(string[] args)
         {
-            Console.WriteLine(movies_PV_522_connection_string);
-             
-            
+
+            movies_PV_522.Select("SELECT * FROM Directors");
+            movies_PV_522.Select("title,first_name,last_name" , "Movies,Directors","director = director_id");
+
+            /*
             string cmd = "SELECT * FROM Directors";
             movies_PV_522.Select(cmd);
             Console.WriteLine($"Колличество записей: {movies_PV_522.Scalar("SELECT COUNT(*) FROM Directors")}");
-            //movies_PV_522.Select
-            //    (
-            //        "SELECT " +
-            //        "title , release_date , first_name , last_name " +
-            //        "FROM Movies , Directors " +
-            //        "WHERE director_id = director"
-            //    );
+            
             movies_PV_522.Select
                 (
                 "title , release_date , first_name , last_name",
                 "Movies , Directors",
                 "director = director_id"
                 );
+            */
             ConsolePause();
         }
         static void ConsolePause() 
         {
-            Console.Write("Press any Key to continue . . .");
+            Console.Write(" Press any Key to continue . . .");
             Console.ReadKey();
         }
     }

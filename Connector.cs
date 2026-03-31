@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ADO
 {
-    public class T_SQL 
+    public class Connector 
     {
         private SqlConnection connection;
         
-        public T_SQL(SqlConnection _connection) { connection = _connection; }
-        public T_SQL(ref SqlConnection _connection) { connection = _connection; }
+        //public Connector(SqlConnection _connection) { connection = _connection; }
+        //public Connector(ref SqlConnection _connection) { connection = _connection; }
+        public Connector(string connection_string) 
+        {
+            connection = new SqlConnection(connection_string);
+            Console.WriteLine(connection_string);
+        }
         public void Select(string cmd , int interval = 4)
         {
             SqlCommand command = new SqlCommand(cmd, connection);
