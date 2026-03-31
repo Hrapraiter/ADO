@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ADO
 {
-    public static class T_SQL
+    public class T_SQL 
     {
-        public static SqlConnection connection;
-        public static void Select(string cmd)
+        private SqlConnection connection;
+        
+        public T_SQL(SqlConnection _connection) { connection = _connection; }
+        public T_SQL(ref SqlConnection _connection) { connection = _connection; }
+        public void Select(string cmd , int interval = 4)
         {
             SqlCommand command = new SqlCommand(cmd, connection);
             connection.Open();
@@ -30,36 +34,39 @@ namespace ADO
                 output = output.Append(new string[reader.FieldCount]).ToArray();
                 for (int i = 0; i < reader.FieldCount; i++)
                     output[output.Length - 1][i] = reader[i].ToString();
-                /*
-                string output_line = "";
-                for(int i = 0; i < reader.FieldCount; ++i) 
-                    output_line += reader[i].ToString() + '\t';
-                Console.WriteLine(output_line);
-                */
-                //Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}");
-                //Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}\t{reader.FieldCount}");
             }
             reader.Close();
             connection.Close();
+
             for (int i = 0; i < output[0].Length; ++i)
             {
                 int max_size_str = 0;
                 for (int j = 0; j < output.Length; ++j)
                     if (max_size_str < output[j][i].Length) max_size_str = output[j][i].Length;
 
-
                 for (int j = 0; j < output.Length; ++j)
-                    output[j][i] += new string(' ', max_size_str - output[j][i].Length + 4);
+                    output[j][i] = output[j][i].PadRight(max_size_str + interval);//+= new string(' ', max_size_str - output[j][i].Length + interval);
             }
-            foreach (string[] line in output)
+            for (int i = 0; i < output[0].Length; ++i)
+                Console.Write(output[0][i]);
+            Console.WriteLine($"\n{new string('-' , output[0].Sum(str => str.Length))}");
+
+            for (int i = 1; i < output.Length;++i)
             {
-                foreach (string str in line)
-                    Console.Write(str);
+                foreach (string line in output[i])
+                    Console.Write(line);
                 Console.WriteLine();
             }
+            Console.WriteLine('\n');
+        }
+        public void Select(string fields , string tables , string condition = "" , int interval = 4)
+        {
+            string cmd = $"SELECT {fields} FROM {tables}";
+            if (condition != "") cmd += $" WHERE {condition}";
+            Select(cmd , interval);
         }
         
-        public static object Scalar(string cmd)
+        public object Scalar(string cmd)
         {
             object value = null;
             SqlCommand command = new SqlCommand(cmd, connection);
