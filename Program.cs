@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ADO
 {
     class Program
     {
-        private const string movies_PV_522_connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_522;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
-
-        private static Connector movies_PV_522 = new Connector(movies_PV_522_connection_string);
+        //private const string movies_PV_522_connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_522;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+        static string connection_string = ConfigurationManager.ConnectionStrings["Movies"].ConnectionString;
+        static Connector movies_PV_522 = new Connector(connection_string);
         
         static void Main(string[] args)
         {
