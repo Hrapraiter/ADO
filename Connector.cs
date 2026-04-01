@@ -70,7 +70,34 @@ namespace ADO
             if (condition != "") cmd += $" WHERE {condition}";
             Select(cmd , interval);
         }
-        
+        public void ExecuteNonQuery(string cmd) 
+        {
+            SqlCommand command = new SqlCommand(cmd , connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void Insert(string table, string row_names, params string[] values) 
+        {
+            string format_values = string.Join
+                    (
+                        " , ",
+                        values.Select
+                        (
+                            str =>
+                            str[0] != '(' && str.Last() != ')'
+                            ? "(" + new string(str.Append(')').ToArray())
+                            : str
+                        )
+                    );
+            ExecuteNonQuery($"INSERT {table}({row_names}) VALUES {format_values};");
+        }
+        public void Delete(string table , string condition) 
+        {
+            string cmd = $"DELETE FROM {table}";
+            if (condition != "") cmd += $" WHERE {condition}";
+            ExecuteNonQuery(cmd);
+        }
         public object Scalar(string cmd)
         {
             object value = null;
