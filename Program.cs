@@ -21,6 +21,7 @@ namespace ADO
 
             //movies_PV_522.Select("SELECT * FROM Directors");
             //movies_PV_522.Select("title,first_name,last_name" , "Movies,Directors","director = director_id");
+            
             Console.WriteLine("\x1b[31m-------До вставки-----\x1b[0m\n");
             movies_PV_522.Select("SELECT * FROM Directors");
 
@@ -29,26 +30,15 @@ namespace ADO
                      (
                      "Directors", "director_id , first_name , last_name",
 
-                     $"{++last_index} , 'Jony' , 'Cage' ",
-                     $"{++last_index} , 'Lara' , 'Croft' "
+                     $"{++last_index} , N'Johnny' , N'Cage' ",
+                     $"{++last_index} , N'Lara' , N'Croft' "
 
                      );
             Console.WriteLine("\x1b[32m-------После Вставки------\x1b[0m\n");
             movies_PV_522.Select("SELECT * FROM Directors");
 
             movies_PV_522.Delete("Directors" , "director_id > 6");
-            /*
-            string cmd = "SELECT * FROM Directors";
-            movies_PV_522.Select(cmd);
-            Console.WriteLine($"Колличество записей: {movies_PV_522.Scalar("SELECT COUNT(*) FROM Directors")}");
             
-            movies_PV_522.Select
-                (
-                "title , release_date , first_name , last_name",
-                "Movies , Directors",
-                "director = director_id"
-                );
-            */
             ConsolePause();
         }
         static void ConsolePause() 
