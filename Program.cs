@@ -19,14 +19,22 @@ namespace ADO
         {
             Console.WriteLine(movies_PV_522.GetPrimaryKeyColumnName("Movies"));
             Console.WriteLine(movies_PV_522.GetNextPrimaryKey("Movies"));
+
+            //Console.WriteLine(movies_PV_522.isBase("Directors", new string[] { "first_name", "last_name" }, new string[] { "N'Peter'", "N'Jackson'" }));
+
+
+
             movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
                                 $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'Peter' , N'Jackson')");
-            //movies_PV_522.Insert("INSERT Movies (movie_id , title , release_date , director)" +
-            //                     "VALUES           ((SELECT MAX(movie_id) FROM Movies)+1 , N'',N'', 7");
-            movies_PV_522.Select("SELECT * FROM Directors");
-            movies_PV_522.Select("title,first_name,last_name" , "Movies,Directors","director = director_id");
 
-            
+            movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
+                                $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'James' , N'Cameron')");
+
+            movies_PV_522.VoidSelect("SELECT * FROM Directors");
+            movies_PV_522.VoidSelect("title,first_name,last_name", "Movies,Directors", "director = director_id");
+
+
+
             ConsolePause();
         }
         static void ConsolePause() 
