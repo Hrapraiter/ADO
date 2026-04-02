@@ -80,6 +80,32 @@ namespace ADO
             connection.Close();
             return value;
         }
+        public string GetPrimaryKeyColumnName(string table_name) 
+        {
+            string cmd = $@"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
+                            WHERE CONSTRAINT_NAME=
+                            (
+                            SELECT	CONSTRAINT_NAME 
+                            FROM	INFORMATION_SCHEMA.TABLE_CONSTRAINTS 
+                            WHERE	TABLE_NAME= N'{table_name}'
+                            AND		CONSTRAINT_TYPE = N'PRIMARY KEY'
+                            );";
+
+            return Scalar(cmd).ToString();
+        }
+        public int GetLastPrimaryKey(string table_name) =>
+            (int)Scalar($"SELECT MAX({GetPrimaryKeyColumnName(table_name)}) FROM {table_name}");
+        public int GetNextPrimaryKey(string table_name) =>
+            GetLastPrimaryKey(table_name) + 1;
+            
+        
+        public void Insert(string cmd) 
+        {
+            SqlCommand command = new SqlCommand(cmd, connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
         
     }
 }
