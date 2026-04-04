@@ -19,10 +19,20 @@ namespace ADO
         {
             Console.WriteLine(movies_PV_522.GetPrimaryKeyColumnName("Movies"));
             Console.WriteLine(movies_PV_522.GetNextPrimaryKey("Movies"));
-            movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
-                                $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'Peter' , N'Jackson')");
-            //movies_PV_522.Insert("INSERT Movies (movie_id , title , release_date , director)" +
-            //                     "VALUES           ((SELECT MAX(movie_id) FROM Movies)+1 , N'',N'', 7");
+
+            movies_PV_522.Insert
+                (
+                    "Directors",
+                    "director_id , first_name , last_name",
+                    $"{movies_PV_522.GetNextPrimaryKey("Directors")} ,N'James' , N'Cameron'"
+                );
+            movies_PV_522.Insert
+                (
+                    "Directors",
+                    "director_id , first_name , last_name",
+                    $"{movies_PV_522.GetNextPrimaryKey("Directors")} ,N'Sheldon' , N'Letich'"
+                );
+            
             movies_PV_522.Select("SELECT * FROM Directors");
             movies_PV_522.Select("title,first_name,last_name" , "Movies,Directors","director = director_id");
 
