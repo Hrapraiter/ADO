@@ -24,11 +24,14 @@ namespace ADO
 
 
 
-            movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
-                                $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'Peter' , N'Jackson')");
+            //movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
+            //                    $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'Peter' , N'Jackson')");
 
-            movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
-                                $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'James' , N'Cameron')");
+            //movies_PV_522.Insert("INSERT Directors (director_id , first_name , last_name) VALUES" +
+            //                    $"({movies_PV_522.GetNextPrimaryKey("Directors")} , N'James' , N'Cameron')");
+
+            movies_PV_522.Insert("INSERT Movies (movie_id , title , release_date , director) VALUES" +
+                                "(9 , N'Avatar' , N'2009-12-17' , 1)");
 
             movies_PV_522.VoidSelect("SELECT * FROM Directors");
             movies_PV_522.VoidSelect("title,first_name,last_name", "Movies,Directors", "director = director_id");
