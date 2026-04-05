@@ -14,7 +14,19 @@ namespace DLLcheck
         static void Main(string[] args)
         {
             Connector connector = new Connector(ConfigurationManager.ConnectionStrings["Movies_PV_522"].ConnectionString);
+            connector.Insert("Directors", "director_id , first_name , last_name",
+              $"{connector.GetNextPrimaryKey("Directors")} , N'Test_F' , N'Test_L'");
+
+            connector.Update
+                (
+                    "Directors",
+                    "first_name = N'DONE Test_F' , last_name = N'DONE Test_L'",
+                    $"director_id = {connector.GetLastPrimaryKey("Directors")}"
+                );
+
             connector.Select("*", "Directors");
+            //connector.Insert($"DELETE FROM Directors WHERE director_id = {connector.GetLastPrimaryKey("Directors")}");
+
             connector.Select
                 (
                     "title,release_date,first_name , last_name",

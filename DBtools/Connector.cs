@@ -28,7 +28,7 @@ namespace DBtools
 
             for (int i = 0; i < reader.FieldCount; i++)
                 output[0][i] = $"[ {reader.GetName(i)} ]";
-            
+
             while (reader.Read())
             {
                 output = output.Append(new string[reader.FieldCount]).ToArray();
@@ -117,18 +117,18 @@ namespace DBtools
                 Insert($"Insert {table}({fields}) VALUES({values})");
 
         }
-        public void Update(string cmd) 
+        public void Update(string cmd)
         {
             SqlCommand command = new SqlCommand(cmd, connection);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public void Update(string table_name , string set_values , string condition = "") => 
-            
-            Update($"UPDATE {table_name} SET {set_values}" +
-                   condition != "" ? $" WHERE {condition}" : condition);
-        
+        public void Update(string table_name, string set_values, string condition = "")
+        {
+            if((int)Scalar($"SELECT IIF(EXISTS (SELECT * FROM {table_name} WHERE {set_values.Replace(",", "AND")}) , 1 , 0)") == 0)
+                Update($"UPDATE {table_name} SET {set_values} {(condition == "" ? "" : $" WHERE {condition} ")}");
+        }
 
     }
 }

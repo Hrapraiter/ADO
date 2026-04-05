@@ -14,7 +14,7 @@ namespace ADO
         //private const string movies_PV_522_connection_string = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_PV_522;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
         static string connection_string = ConfigurationManager.ConnectionStrings["Movies"].ConnectionString;
         static Connector movies_PV_522 = new Connector(connection_string);
-        
+
         static void Main(string[] args)
         {
             Console.WriteLine(movies_PV_522.GetPrimaryKeyColumnName("Movies"));
@@ -32,14 +32,14 @@ namespace ADO
                     "director_id , first_name , last_name",
                     $"{movies_PV_522.GetNextPrimaryKey("Directors")} ,N'Sheldon' , N'Letich'"
                 );
-            
-            movies_PV_522.Select("SELECT * FROM Directors");
-            movies_PV_522.Select("title,first_name,last_name" , "Movies,Directors","director = director_id");
 
-            
+            movies_PV_522.Select("SELECT * FROM Directors");
+            movies_PV_522.Select("title,first_name,last_name", "Movies,Directors", "director = director_id");
+
+
             ConsolePause();
         }
-        static void ConsolePause() 
+        static void ConsolePause()
         {
             Console.Write(" Press any Key to continue . . .");
             Console.ReadKey();
