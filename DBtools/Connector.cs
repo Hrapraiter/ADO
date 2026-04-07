@@ -124,11 +124,33 @@ namespace DBtools
             command.ExecuteNonQuery();
             connection.Close();
         }
-        public void Update(string table_name, string set_values, string condition = "")
+
+        public void Update(string table , string fields , string values , string condition) 
         {
-            if ((int)Scalar($"SELECT IIF(EXISTS (SELECT * FROM {table_name} WHERE {set_values.Replace(",", "AND")}) , 1 , 0)") == 0)
-                Update($"UPDATE {table_name} SET {set_values} {(condition == "" ? "" : $" WHERE {condition} ")}");
+            string[] s_fields = fields.Split(',');
+            string[] s_values = values.Split(',');
+            if (s_fields.Length != s_values.Length) return;
+            string parsed = " ";
+            for(int i = 0; i < s_fields.Length; i++) 
+            {
+                parsed += $"{s_fields[i]}={ParseValue(s_values[i])}";
+                if (i != s_values.Length - 1) parsed += ',';
+            }
+            Update($"UPDATE {table} SET {parsed} WHERE {condition}");
         }
+
+        string ParseValue(string value) 
+        {
+            if(value.Length > 1)
+                if(value[0] != 'N' && value[1] != '\'') 
+                    value = $"N'{value}'";     
+            return value;
+        }
+        //public void Update(string table_name, string set_values, string condition = "")
+        //{
+        //    if ((int)Scalar($"SELECT IIF(EXISTS (SELECT * FROM {table_name} WHERE {set_values.Replace(",", "AND")}) , 1 , 0)") == 0)
+        //        Update($"UPDATE {table_name} SET {set_values} {(condition == "" ? "" : $" WHERE {condition} ")}");
+        //}
 
     }
 }

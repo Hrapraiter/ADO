@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1FEAF28A-B599-4ABA-9D62-3D2555299543}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DLLcheck2</RootNamespace>
-    <AssemblyName>DLLcheck2</AssemblyName>
+    <RootNamespace>DLLcheck</RootNamespace>
+    <AssemblyName>DLLcheck</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,8 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="DBtools">
+      <HintPath>..\DBtools\bin\Debug\DBtools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
