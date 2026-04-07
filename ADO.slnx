@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="../DBtools/DBtools.csproj" Id="fbfb4b6f-4514-4cf2-bfab-8c081358d5d8" />
-  <Project Path="../DLLcheck/DLLcheck.csproj" Id="4c9c86a5-3fc8-4cee-b1c4-df63303e9e10" />
   <Project Path="ADO.csproj" Id="562ab0df-49a7-46ab-b55d-c417d54e28ef" />
+  <Project Path="DBtools/DBtools.csproj" Id="3e90cca4-ea67-4cd1-b1ee-ec9e85d37603" />
+  <Project Path="DLLcheck/DLLcheck.csproj" Id="1feaf28a-b599-4aba-9d62-3d2555299543" />
 </Solution>
