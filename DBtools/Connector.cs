@@ -31,8 +31,8 @@ namespace DBtools
 
             for (int i = 0; i < reader.FieldCount; i++)
             {
-                table.Columns.Add(output[0][i]);
                 output[0][i] = $"[ {reader.GetName(i)} ]";
+                table.Columns.Add(reader.GetName(i));
              }
 
             while (reader.Read())

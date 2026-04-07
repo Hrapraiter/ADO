@@ -21,7 +21,16 @@ namespace Academy
         {
             InitializeComponent();
             connector = new Connector(ConfigurationManager.ConnectionStrings["PV_522_Import"].ConnectionString);
-            dgvDirections.DataSource = connector.Select("SELECT * FROM Directions");
+            
+            Func<string, DataTable> casheSelect = table_name => connector.Select($"SELECT * FROM {table_name}");
+            
+            dgvStudents     .DataSource   = casheSelect("Students");
+            dgvGroups       .DataSource   = casheSelect("Groups");
+            dgvDirections   .DataSource   = casheSelect("Directions");
+            dgvDiscipliens  .DataSource   = casheSelect("Disciplines");
+            dgvTeachers     .DataSource   = casheSelect("Teachers");
+
+
         }
     }
 }
