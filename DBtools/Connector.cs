@@ -4,8 +4,10 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Reflection.Emit;
+
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DBtools
 {
@@ -18,8 +20,9 @@ namespace DBtools
             connection = new SqlConnection(connection_string);
             Console.WriteLine(connection_string);
         }
-        public void Select(string cmd, int interval = 4)
+        public DataTable Select(string cmd, int interval = 4)
         {
+            DataTable table = new DataTable();
             SqlCommand command = new SqlCommand(cmd, connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -48,16 +51,25 @@ namespace DBtools
                     output[j][i] = output[j][i].PadRight(max_size_str + interval);//+= new string(' ', max_size_str - output[j][i].Length + interval);
             }
             for (int i = 0; i < output[0].Length; ++i)
+            {
                 Console.Write(output[0][i]);
+                table.Columns.Add(output[0][i]);
+            }
             Console.WriteLine($"\n{new string('-', output[0].Sum(str => str.Length))}");
 
-            for (int i = 1; i < output.Length; ++i)
+            for (int i = 1; i < output.Length;++i)
             {
-                foreach (string line in output[i])
-                    Console.Write(line);
+                DataRow row = table.NewRow();
+                for(int j = 0; j < output[i].Length;++j)
+                {
+                    Console.Write(output[i][j]);
+                    row[i] = output[i][j];
+                }
                 Console.WriteLine();
+                table.Rows.Add(row);
             }
             Console.WriteLine('\n');
+            return table;
         }
         public void Select(string fields, string tables, string condition = "", int interval = 4)
         {
