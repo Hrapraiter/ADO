@@ -14,24 +14,24 @@ namespace DLLcheck
         static void Main(string[] args)
         {
             Connector connector = new Connector(ConfigurationManager.ConnectionStrings["Movies_PV_522"].ConnectionString);
-            connector.Insert("Directors", "director_id , first_name , last_name",
-              $"{connector.GetNextPrimaryKey("Directors")} , N'Test_F' , N'Test_L'");
+            //connector.Insert("Directors", "director_id , first_name , last_name",
+            //  $"{connector.GetNextPrimaryKey("Directors")} , N'Test_F' , N'Test_L'");
 
             //connector.Insert("DELETE FROM Directors WHERE director_id > 9");
-            connector.Update("UPDATE Directors SET first_name=N'Peter' , last_name=N'Tagtgren' WHERE director_id = 8");
-            connector.Update("Directors" , "first_name , last_name" , "Michael,Jackson"/*"James , Cameron"*/ , "director_id = 9");
+            //connector.Update("UPDATE Directors SET first_name=N'Peter' , last_name=N'Tagtgren' WHERE director_id = 8");
+            //connector.Update("Directors" , "first_name , last_name" , "Michael,Jackson"/*"James , Cameron"*/ , "director_id = 9");
             
             connector.Select("*", "Directors");
             //connector.Insert($"DELETE FROM Directors WHERE director_id = {connector.GetLastPrimaryKey("Directors")}");
 
-            connector.Select
-                (
-                    "title,release_date,first_name , last_name",
-                    "Movies , Directors",
-                    "director = director_id"
-                );
-            Connector connectorAcademy = new Connector(ConfigurationManager.ConnectionStrings["PV_522_Import"].ConnectionString);
-            connectorAcademy.Select("*", "Disciplines");
+            //connector.Select
+            //    (
+            //        "title,release_date,first_name , last_name",
+            //        "Movies , Directors",
+            //        "director = director_id"
+            //    );
+            //Connector connectorAcademy = new Connector(ConfigurationManager.ConnectionStrings["PV_522_Import"].ConnectionString);
+            //connectorAcademy.Select("*", "Disciplines");
         }
     }
 }

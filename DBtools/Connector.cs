@@ -30,13 +30,21 @@ namespace DBtools
             output[0] = new string[reader.FieldCount];
 
             for (int i = 0; i < reader.FieldCount; i++)
+            {
+                table.Columns.Add(output[0][i]);
                 output[0][i] = $"[ {reader.GetName(i)} ]";
+             }
 
             while (reader.Read())
             {
                 output = output.Append(new string[reader.FieldCount]).ToArray();
+                DataRow row = table.NewRow();
                 for (int i = 0; i < reader.FieldCount; i++)
+                {
                     output[output.Length - 1][i] = reader[i].ToString();
+                    row[i] = reader[i];
+                }
+                table.Rows.Add(row);
             }
             reader.Close();
             connection.Close();
@@ -51,22 +59,15 @@ namespace DBtools
                     output[j][i] = output[j][i].PadRight(max_size_str + interval);//+= new string(' ', max_size_str - output[j][i].Length + interval);
             }
             for (int i = 0; i < output[0].Length; ++i)
-            {
                 Console.Write(output[0][i]);
-                table.Columns.Add(output[0][i]);
-            }
+            
             Console.WriteLine($"\n{new string('-', output[0].Sum(str => str.Length))}");
 
             for (int i = 1; i < output.Length;++i)
             {
-                DataRow row = table.NewRow();
                 for(int j = 0; j < output[i].Length;++j)
-                {
                     Console.Write(output[i][j]);
-                    row[i] = output[i][j];
-                }
                 Console.WriteLine();
-                table.Rows.Add(row);
             }
             Console.WriteLine('\n');
             return table;
