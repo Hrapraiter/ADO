@@ -136,14 +136,20 @@ namespace DBtools
                 parsed += $"{s_fields[i]}={ParseValue(s_values[i])}";
                 if (i != s_values.Length - 1) parsed += ',';
             }
-            Update($"UPDATE {table} SET {parsed} WHERE {condition}");
+            string cmd = $"UPDATE {table} SET {parsed} WHERE {condition}";
+            if (Scalar($"SELECT {GetPrimaryKeyColumnName(table)} FROM {table} WHERE {parsed.Replace("," , " AND ")}") == null)
+                Update(cmd);
         }
 
         string ParseValue(string value) 
         {
             if(value.Length > 1)
-                if(value[0] != 'N' && value[1] != '\'') 
-                    value = $"N'{value}'";     
+            {
+                value = value.Trim(); // Метод удаляет пробелы в начале и в конце строки
+                if (value[0] != 'N' && value[1] != '\'')
+                    value = $"N'{value}'";
+            }
+                   
             return value;
         }
         //public void Update(string table_name, string set_values, string condition = "")

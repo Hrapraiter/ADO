@@ -18,8 +18,8 @@ namespace DLLcheck
               $"{connector.GetNextPrimaryKey("Directors")} , N'Test_F' , N'Test_L'");
 
             //connector.Insert("DELETE FROM Directors WHERE director_id > 9");
-            connector.Update("UPDATE Directors SET last_name=N'Tagtgren' WHERE director_id = 8");
-            connector.Update("Directors" , "first_name" , "Michael" , "director_id = 9");
+            connector.Update("UPDATE Directors SET first_name=N'Peter' , last_name=N'Tagtgren' WHERE director_id = 8");
+            connector.Update("Directors" , "first_name , last_name" , "Michael,Jackson"/*"James , Cameron"*/ , "director_id = 9");
             
             connector.Select("*", "Directors");
             //connector.Insert($"DELETE FROM Directors WHERE director_id = {connector.GetLastPrimaryKey("Directors")}");
