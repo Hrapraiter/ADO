@@ -22,7 +22,7 @@ namespace Academy
             {
                 new Query
                 (
-                    "stud_id , last_name , first_name , middle_name , group_name , direction_name",
+                    "stud_id , last_name , first_name , middle_name ,birth_date, group_name , direction_name",
                     "Students, Groups , Directions",
                     "[group] = group_id AND direction = direction_id"
                 ),
@@ -55,7 +55,7 @@ namespace Academy
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             int i = (sender as TabControl).SelectedIndex;
-            tables[i].DataSource = connector.Select(queries[i].ToString());
+            tables[i].DataSource = connector.Load(queries[i].ToString());
             toolStripStatusLabel.Text = $"Колличество записей: {tables[i].RowCount-1}";
         }
     }
