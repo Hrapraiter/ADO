@@ -31,8 +31,8 @@ namespace DBtools
 
             for (int i = 0; i < reader.FieldCount; i++)
             {
-                table.Columns.Add(output[0][i]);
                 output[0][i] = $"[ {reader.GetName(i)} ]";
+                table.Columns.Add(reader.GetName(i));
              }
 
             while (reader.Read())
@@ -72,11 +72,11 @@ namespace DBtools
             Console.WriteLine('\n');
             return table;
         }
-        public void Select(string fields, string tables, string condition = "", int interval = 4)
+        public DataTable Select(string fields, string tables, string condition = "", int interval = 4)
         {
             string cmd = $"SELECT {fields} FROM {tables}";
             if (condition != "") cmd += $" WHERE {condition}";
-            Select(cmd, interval);
+            return Select(cmd, interval);
         }
 
         public object Scalar(string cmd)
