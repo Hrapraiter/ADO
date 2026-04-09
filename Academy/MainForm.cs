@@ -50,6 +50,10 @@ namespace Academy
                 dgvTeachers
             };
             tabControl_SelectedIndexChanged(tabControl, null);
+
+            cbGroupsDirection.DataSource = connector.Load("SELECT * FROM Directions");
+            cbGroupsDirection.DisplayMember = "direction_name";
+            cbGroupsDirection.ValueMember = "direction_id";
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,6 +61,16 @@ namespace Academy
             int i = (sender as TabControl).SelectedIndex;
             tables[i].DataSource = connector.Load(queries[i].ToString());
             toolStripStatusLabel.Text = $"Колличество записей: {tables[i].RowCount-1}";
+        }
+
+
+        private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            dgvGroups.DataSource = connector.Load(queries[1].ToString() + $" AND direction={cbGroupsDirection.SelectedValue}");
+        }
+        private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
