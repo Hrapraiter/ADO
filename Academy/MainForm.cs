@@ -54,6 +54,8 @@ namespace Academy
             cbGroupsDirection.DataSource = connector.Load("SELECT * FROM Directions");
             cbGroupsDirection.DisplayMember = "direction_name";
             cbGroupsDirection.ValueMember = "direction_id";
+
+            
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,14 +65,15 @@ namespace Academy
             toolStripStatusLabel.Text = $"Колличество записей: {tables[i].RowCount-1}";
         }
 
-
+        private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolStripStatusLabel.Text = $"Колличество записей: {tables[1].RowCount - 1}";
+        }
         private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
         {
             dgvGroups.DataSource = connector.Load(queries[1].ToString() + $" AND direction={cbGroupsDirection.SelectedValue}");
+            toolStripStatusLabel.Text = $"Колличество записей: {tables[1].RowCount - 1}";
         }
-        private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
