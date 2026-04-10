@@ -42,6 +42,7 @@
             this.tabPageTeachers = new System.Windows.Forms.TabPage();
             this.dgvTeachers = new System.Windows.Forms.DataGridView();
             this.cbGroupsDirection = new System.Windows.Forms.ComboBox();
+            this.cbStudentsGroups = new System.Windows.Forms.ComboBox();
             this.statusStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // tabPageStudents
             // 
+            this.tabPageStudents.Controls.Add(this.cbStudentsGroups);
             this.tabPageStudents.Controls.Add(this.dgvStudents);
             this.tabPageStudents.Location = new System.Drawing.Point(4, 29);
             this.tabPageStudents.Name = "tabPageStudents";
@@ -225,6 +227,17 @@
             this.cbGroupsDirection.SelectedIndexChanged += new System.EventHandler(this.cbGroupsDirection_SelectedIndexChanged);
             this.cbGroupsDirection.SelectionChangeCommitted += new System.EventHandler(this.cbGroupsDirection_SelectionChangeCommitted);
             // 
+            // cbStudentsGroups
+            // 
+            this.cbStudentsGroups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudentsGroups.FormattingEnabled = true;
+            this.cbStudentsGroups.Location = new System.Drawing.Point(0, 3);
+            this.cbStudentsGroups.Name = "cbStudentsGroups";
+            this.cbStudentsGroups.Size = new System.Drawing.Size(421, 28);
+            this.cbStudentsGroups.TabIndex = 3;
+            this.cbStudentsGroups.SelectedIndexChanged += new System.EventHandler(this.cbStudentsGroups_SelectedIndexChanged);
+            this.cbStudentsGroups.SelectionChangeCommitted += new System.EventHandler(this.cbStudentsGroups_SelectionChangeCommitted);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -268,6 +281,7 @@
         private System.Windows.Forms.DataGridView dgvTeachers;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ComboBox cbGroupsDirection;
+        private System.Windows.Forms.ComboBox cbStudentsGroups;
     }
 }
 

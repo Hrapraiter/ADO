@@ -28,7 +28,7 @@ namespace Academy
                 ),
                 new Query
                 (
-                    "group_id,group_name,start_date,start_time,learning_days,direction_name",
+                    "group_id,group_name,start_date,start_time,learning_days = dbo.LearningDaysFormat(learning_days),direction_name",
                     "Groups,Directions",
                     "direction = direction_id"
                 ),
@@ -55,7 +55,9 @@ namespace Academy
             cbGroupsDirection.DisplayMember = "direction_name";
             cbGroupsDirection.ValueMember = "direction_id";
 
-            
+            cbStudentsGroups.DataSource = connector.Load("SELECT * FROM Groups");
+            cbStudentsGroups.DisplayMember = "group_name";
+            cbStudentsGroups.ValueMember = "group_id";
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,15 +67,22 @@ namespace Academy
             toolStripStatusLabel.Text = $"Колличество записей: {tables[i].RowCount-1}";
         }
 
-        private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            toolStripStatusLabel.Text = $"Колличество записей: {tables[1].RowCount - 1}";
-        }
+        private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e) // cbGroupsDirection
+            => toolStripStatusLabel.Text = $"Колличество записей: {tables[1].RowCount - 1}";
         private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
         {
             dgvGroups.DataSource = connector.Load(queries[1].ToString() + $" AND direction={cbGroupsDirection.SelectedValue}");
             toolStripStatusLabel.Text = $"Колличество записей: {tables[1].RowCount - 1}";
         }
-        
+
+
+        private void cbStudentsGroups_SelectedIndexChanged(object sender, EventArgs e) // cbStudentsGroups
+            => toolStripStatusLabel.Text = $"Колличество записей: {tables[0].RowCount - 1}";
+        private void cbStudentsGroups_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            dgvStudents.DataSource = connector.Load(queries[0].ToString() + $" AND [group]={cbStudentsGroups.SelectedValue}");
+            toolStripStatusLabel.Text = $"Колличество записей: {tables[0].RowCount - 1}";
+        }
+
     }
 }
