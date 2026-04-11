@@ -15,6 +15,7 @@ BEGIN
 	(1 , N'Пн'),(2 , N'Вт'),(3 , N'Ср'),(4 , N'Чт'),
 	(5 , N'Пт'),(6 , N'Сб'),(7 , N'Вс');
 	DECLARE @bit_counter AS TINYINT = 0;
+
 	WHILE @bit_counter <= 6
 	BEGIN
 		DECLARE @temp_day AS NCHAR(2) = (SELECT day_name FROM @Weekdays_F WHERE day_id = @bit_counter + 1);
