@@ -74,6 +74,11 @@ namespace Academy
             dgvGroups.DataSource = connector.Load(queries[1].ToString() + $" AND direction={cbGroupsDirection.SelectedValue}");
             toolStripStatusLabel.Text = $"Колличество записей: {tables[1].RowCount - 1}";
         }
-        
+
+        private void buttonAddStudent_Click(object sender, EventArgs e)
+        {
+            StudentForm human = new StudentForm();
+            human.ShowDialog();
+        }
     }
 }
