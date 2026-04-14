@@ -52,7 +52,7 @@
             // 
             this.labelLastName.AutoSize = true;
             this.labelLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelLastName.Location = new System.Drawing.Point(315, 9);
+            this.labelLastName.Location = new System.Drawing.Point(306, 9);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(153, 37);
             this.labelLastName.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             this.labelFirstName.AutoSize = true;
             this.labelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelFirstName.Location = new System.Drawing.Point(391, 63);
+            this.labelFirstName.Location = new System.Drawing.Point(372, 63);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(87, 37);
             this.labelFirstName.TabIndex = 1;
@@ -72,7 +72,7 @@
             // 
             this.labelMidleName.AutoSize = true;
             this.labelMidleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelMidleName.Location = new System.Drawing.Point(315, 119);
+            this.labelMidleName.Location = new System.Drawing.Point(299, 119);
             this.labelMidleName.Name = "labelMidleName";
             this.labelMidleName.Size = new System.Drawing.Size(160, 37);
             this.labelMidleName.TabIndex = 2;
@@ -82,7 +82,7 @@
             // 
             this.labelBirthDate.AutoSize = true;
             this.labelBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelBirthDate.Location = new System.Drawing.Point(222, 171);
+            this.labelBirthDate.Location = new System.Drawing.Point(213, 171);
             this.labelBirthDate.Name = "labelBirthDate";
             this.labelBirthDate.Size = new System.Drawing.Size(246, 37);
             this.labelBirthDate.TabIndex = 3;
@@ -92,7 +92,7 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelEmail.Location = new System.Drawing.Point(362, 227);
+            this.labelEmail.Location = new System.Drawing.Point(343, 227);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(116, 37);
             this.labelEmail.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.labelPhone.AutoSize = true;
             this.labelPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelPhone.Location = new System.Drawing.Point(318, 279);
+            this.labelPhone.Location = new System.Drawing.Point(309, 279);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(150, 37);
             this.labelPhone.TabIndex = 5;
@@ -199,6 +199,7 @@
             this.buttonOk.TabIndex = 15;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonCancel
             // 

@@ -12,9 +12,28 @@ namespace Academy
 {
     public partial class HumanForm : Form
     {
+        internal Models.Human human;
         public HumanForm()
         {
             InitializeComponent();
+        }
+        void Compress() 
+        {
+            human = new Models.Human
+                (
+                   Convert.ToInt32(labelID.Text == "" ? "0" : labelID.Text.Split(':').Last()),
+                   textBoxLastName.Text,
+                   textBoxFirstName.Text,
+                   textBoxMidleName.Text,
+                   dtpBirthDate.Value.ToString("yyyy-mm-dd"),
+                   textBoxEmail.Text,
+                   textBoxPhone.Text,
+                   pictureBoxPhoto.Image
+                );
+        }
+        protected virtual void buttonOk_Click(object sender, EventArgs e)
+        {
+            Compress();
         }
     }
 }

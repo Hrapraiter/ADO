@@ -46,7 +46,7 @@
             // 
             this.labelGroup.AutoSize = true;
             this.labelGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelGroup.Location = new System.Drawing.Point(345, 338);
+            this.labelGroup.Location = new System.Drawing.Point(336, 338);
             this.labelGroup.Name = "labelGroup";
             this.labelGroup.Size = new System.Drawing.Size(123, 37);
             this.labelGroup.TabIndex = 19;
