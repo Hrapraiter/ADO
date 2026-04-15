@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,7 +27,7 @@ namespace Academy
                    textBoxLastName.Text,
                    textBoxFirstName.Text,
                    textBoxMidleName.Text,
-                   dtpBirthDate.Value.ToString("yyyy-mm-dd"),
+                   $"{dtpBirthDate.Value.Year}-{dtpBirthDate.Value.Month}-{dtpBirthDate.Value.Day}",//dtpBirthDate.Value.ToString("yyyy-mm-dd"), no working
                    textBoxEmail.Text,
                    textBoxPhone.Text,
                    pictureBoxPhoto.Image
