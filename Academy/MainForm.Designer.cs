@@ -119,7 +119,9 @@
             this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudents.Location = new System.Drawing.Point(0, 37);
+            this.dgvStudents.MultiSelect = false;
             this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.ReadOnly = true;
             this.dgvStudents.RowHeadersWidth = 62;
             this.dgvStudents.RowTemplate.Height = 28;
             this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

@@ -30,6 +30,7 @@
         {
             this.cbStudentsGroups = new System.Windows.Forms.ComboBox();
             this.labelGroup = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // cbStudentsGroups
@@ -61,8 +62,23 @@
             this.Controls.Add(this.cbStudentsGroups);
             this.Name = "StudentForm";
             this.Text = "StudentForm";
+            this.Controls.SetChildIndex(this.labelLastName, 0);
+            this.Controls.SetChildIndex(this.labelFirstName, 0);
+            this.Controls.SetChildIndex(this.labelMidleName, 0);
+            this.Controls.SetChildIndex(this.labelBirthDate, 0);
+            this.Controls.SetChildIndex(this.labelEmail, 0);
+            this.Controls.SetChildIndex(this.labelPhone, 0);
+            this.Controls.SetChildIndex(this.textBoxLastName, 0);
+            this.Controls.SetChildIndex(this.textBoxFirstName, 0);
+            this.Controls.SetChildIndex(this.textBoxMidleName, 0);
+            this.Controls.SetChildIndex(this.textBoxEmail, 0);
+            this.Controls.SetChildIndex(this.textBoxPhone, 0);
+            this.Controls.SetChildIndex(this.dtpBirthDate, 0);
+            this.Controls.SetChildIndex(this.pictureBoxPhoto, 0);
+            this.Controls.SetChildIndex(this.labelID, 0);
             this.Controls.SetChildIndex(this.cbStudentsGroups, 0);
             this.Controls.SetChildIndex(this.labelGroup, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
