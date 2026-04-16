@@ -28,7 +28,7 @@ namespace Academy
                 ),
                 new Query
                 (
-                    "group_id,group_name,start_date,start_time,learning_days,direction_name",
+                    "group_id,group_name,start_date,start_time,learning_days = dbo.LearningDaysFormat(learning_days , N' , '),direction_name",
                     "Groups,Directions",
                     "direction = direction_id"
                 ),
@@ -77,8 +77,17 @@ namespace Academy
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
-            StudentForm human = new StudentForm();
-            human.ShowDialog();
+            StudentForm student = new StudentForm();
+            if (student.ShowDialog() == DialogResult.OK)
+                tabControl_SelectedIndexChanged(tabControl, null);
+        }
+
+        private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int id = Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells[0].Value);
+            StudentForm form = new StudentForm(id);
+            if (form.ShowDialog() == DialogResult.OK)
+                tabControl_SelectedIndexChanged(tabControl, null);
         }
     }
 }

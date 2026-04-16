@@ -24,6 +24,16 @@ namespace Academy.Models
             this.work_since = work_since;
             this.rate = rate;
         }
+        public Teacher(Human human , string work_since , decimal rate) : base(human) 
+        {
+            this.work_since = work_since;
+            this.rate = rate;
+        }
+        public Teacher(object[] values) : base(values) 
+        {
+            this.work_since = values[8].ToString();
+            this.rate = Convert.ToDecimal(values[9].ToString());
+        }
         public override string GetNames()
         {
             return base.GetNames() + ",work_since,rate";

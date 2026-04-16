@@ -216,10 +216,11 @@
             // 
             this.labelID.AutoSize = true;
             this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelID.Location = new System.Drawing.Point(427, 432);
+            this.labelID.Location = new System.Drawing.Point(245, 404);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(0, 37);
             this.labelID.TabIndex = 17;
+            this.labelID.Visible = false;
             // 
             // HumanForm
             // 
