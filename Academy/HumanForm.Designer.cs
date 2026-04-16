@@ -176,6 +176,7 @@
             this.pictureBoxPhoto.Location = new System.Drawing.Point(16, 9);
             this.pictureBoxPhoto.Name = "pictureBoxPhoto";
             this.pictureBoxPhoto.Size = new System.Drawing.Size(191, 160);
+            this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPhoto.TabIndex = 13;
             this.pictureBoxPhoto.TabStop = false;
             // 
@@ -188,6 +189,7 @@
             this.buttonBrowse.TabIndex = 14;
             this.buttonBrowse.Text = "Обзор";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // buttonOk
             // 
@@ -256,22 +258,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelLastName;
-        private System.Windows.Forms.Label labelFirstName;
-        private System.Windows.Forms.Label labelMidleName;
-        private System.Windows.Forms.Label labelBirthDate;
-        private System.Windows.Forms.Label labelEmail;
-        private System.Windows.Forms.Label labelPhone;
-        private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.TextBox textBoxFirstName;
-        private System.Windows.Forms.TextBox textBoxMidleName;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxPhone;
-        private System.Windows.Forms.DateTimePicker dtpBirthDate;
-        private System.Windows.Forms.PictureBox pictureBoxPhoto;
+        protected System.Windows.Forms.Label labelLastName;
+        protected System.Windows.Forms.Label labelFirstName;
+        protected System.Windows.Forms.Label labelMidleName;
+        protected System.Windows.Forms.Label labelBirthDate;
+        protected System.Windows.Forms.Label labelEmail;
+        protected System.Windows.Forms.Label labelPhone;
+        protected System.Windows.Forms.Label labelID;
+        protected System.Windows.Forms.TextBox textBoxLastName;
+        protected System.Windows.Forms.TextBox textBoxFirstName;
+        protected System.Windows.Forms.TextBox textBoxMidleName;
+        protected System.Windows.Forms.TextBox textBoxEmail;
+        protected System.Windows.Forms.TextBox textBoxPhone;
+        protected System.Windows.Forms.DateTimePicker dtpBirthDate;
+        protected System.Windows.Forms.PictureBox pictureBoxPhoto;
+        
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Label labelID;
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -36,6 +38,17 @@ namespace Academy
         protected virtual void buttonOk_Click(object sender, EventArgs e)
         {
             Compress();
+        }
+
+        private void buttonBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel) return;
+
+            string path = openFileDialog.FileName;
+            //MessageBox.Show(path);
+            pictureBoxPhoto.Image = Image.FromFile(path);
         }
     }
 }
