@@ -1,6 +1,6 @@
 ﻿namespace Academy
 {
-    partial class StudentForm
+    partial class TeacherForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbStudentsGroups = new System.Windows.Forms.ComboBox();
-            this.labelGroup = new System.Windows.Forms.Label();
+            this.dtpWorkSince = new System.Windows.Forms.DateTimePicker();
+            this.textBoxRate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
             this.SuspendLayout();
             // 
+            // buttonOk
+            // 
+            this.buttonOk.Location = new System.Drawing.Point(474, 452);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(647, 452);
+            // 
             // labelID
             // 
-            this.labelID.Location = new System.Drawing.Point(24, 395);
-            this.labelID.Visible = true;
+            this.labelID.Location = new System.Drawing.Point(23, 436);
             // 
-            // cbStudentsGroups
+            // dtpWorkSince
             // 
-            this.cbStudentsGroups.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudentsGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.cbStudentsGroups.FormattingEnabled = true;
-            this.cbStudentsGroups.Location = new System.Drawing.Point(474, 335);
-            this.cbStudentsGroups.Name = "cbStudentsGroups";
-            this.cbStudentsGroups.Size = new System.Drawing.Size(330, 40);
-            this.cbStudentsGroups.TabIndex = 18;
+            this.dtpWorkSince.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpWorkSince.CustomFormat = "yyyy.MMMM.dd";
+            this.dtpWorkSince.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpWorkSince.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpWorkSince.Location = new System.Drawing.Point(474, 335);
+            this.dtpWorkSince.Name = "dtpWorkSince";
+            this.dtpWorkSince.Size = new System.Drawing.Size(330, 39);
+            this.dtpWorkSince.TabIndex = 18;
             // 
-            // labelGroup
+            // textBoxRate
             // 
-            this.labelGroup.AutoSize = true;
-            this.labelGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelGroup.Location = new System.Drawing.Point(336, 338);
-            this.labelGroup.Name = "labelGroup";
-            this.labelGroup.Size = new System.Drawing.Size(123, 37);
-            this.labelGroup.TabIndex = 19;
-            this.labelGroup.Text = "Группа:";
+            this.textBoxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.textBoxRate.Location = new System.Drawing.Point(474, 391);
+            this.textBoxRate.Name = "textBoxRate";
+            this.textBoxRate.Size = new System.Drawing.Size(100, 39);
+            this.textBoxRate.TabIndex = 19;
             // 
-            // StudentForm
+            // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(816, 448);
-            this.Controls.Add(this.labelGroup);
-            this.Controls.Add(this.cbStudentsGroups);
-            this.Name = "StudentForm";
-            this.Text = "StudentForm";
+            this.ClientSize = new System.Drawing.Size(822, 510);
+            this.Controls.Add(this.textBoxRate);
+            this.Controls.Add(this.dtpWorkSince);
+            this.Name = "TeacherForm";
+            this.Text = "TeacherForm";
             this.Controls.SetChildIndex(this.labelLastName, 0);
             this.Controls.SetChildIndex(this.labelFirstName, 0);
             this.Controls.SetChildIndex(this.labelMidleName, 0);
@@ -84,8 +90,8 @@
             this.Controls.SetChildIndex(this.buttonOk, 0);
             this.Controls.SetChildIndex(this.buttonCancel, 0);
             this.Controls.SetChildIndex(this.labelID, 0);
-            this.Controls.SetChildIndex(this.cbStudentsGroups, 0);
-            this.Controls.SetChildIndex(this.labelGroup, 0);
+            this.Controls.SetChildIndex(this.dtpWorkSince, 0);
+            this.Controls.SetChildIndex(this.textBoxRate, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,7 +100,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbStudentsGroups;
-        private System.Windows.Forms.Label labelGroup;
+        private System.Windows.Forms.DateTimePicker dtpWorkSince;
+        private System.Windows.Forms.TextBox textBoxRate;
     }
 }
