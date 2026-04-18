@@ -23,14 +23,14 @@ namespace Academy.Models
         public Human
             (
                 int id,
-                string first_name, string midle_name,
-                string last_name, string birth_date,
+                string last_name, string first_name,
+                string middle_name, string birth_date,
                 string email, string phone, Image photo
             )
         {
             this.id = id;
             this.first_name = first_name;
-            this.middle_name = midle_name;
+            this.middle_name = middle_name;
             this.last_name = last_name;
             this.birth_date = birth_date;
             this.email = email;
