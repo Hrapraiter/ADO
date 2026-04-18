@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Academy.Models
 {
@@ -76,6 +77,14 @@ namespace Academy.Models
                 $"birth_date=N'{birth_date}'," +
                 $"email=N'{email}'," +
                 $"phone=N'{phone}'";
+        }
+        public byte[] SerializePhoto() 
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                photo.Save(ms, photo.RawFormat);
+                return ms.ToArray();
+            }
         }
     }
 }

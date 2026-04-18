@@ -175,19 +175,21 @@
             this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxPhoto.Location = new System.Drawing.Point(16, 9);
             this.pictureBoxPhoto.Name = "pictureBoxPhoto";
-            this.pictureBoxPhoto.Size = new System.Drawing.Size(191, 160);
+            this.pictureBoxPhoto.Size = new System.Drawing.Size(203, 212);
+            this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPhoto.TabIndex = 13;
             this.pictureBoxPhoto.TabStop = false;
             // 
             // buttonBrowse
             // 
             this.buttonBrowse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.buttonBrowse.Location = new System.Drawing.Point(15, 178);
+            this.buttonBrowse.Location = new System.Drawing.Point(16, 227);
             this.buttonBrowse.Name = "buttonBrowse";
-            this.buttonBrowse.Size = new System.Drawing.Size(192, 46);
+            this.buttonBrowse.Size = new System.Drawing.Size(204, 46);
             this.buttonBrowse.TabIndex = 14;
             this.buttonBrowse.Text = "Обзор";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // buttonOk
             // 

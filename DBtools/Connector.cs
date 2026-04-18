@@ -176,11 +176,16 @@ namespace DBtools
                    
             return value;
         }
-        //public void Update(string table_name, string set_values, string condition = "")
-        //{
-        //    if ((int)Scalar($"SELECT IIF(EXISTS (SELECT * FROM {table_name} WHERE {set_values.Replace(",", "AND")}) , 1 , 0)") == 0)
-        //        Update($"UPDATE {table_name} SET {set_values} {(condition == "" ? "" : $" WHERE {condition} ")}");
-        //}
+        public void UploadPhoto(byte[] image, int id , string field , string table) 
+        {
+            string cmd = $"UPDATE {table} SET {field}=@image WHERE {GetPrimaryKeyColumnName(table)}={id}";
+            SqlCommand command = new SqlCommand(cmd, connection);
+            command.Parameters.Add("@image", SqlDbType.VarBinary).Value = image;
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+
+        }
 
     }
 }
