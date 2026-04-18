@@ -27,7 +27,7 @@ namespace Academy
                    textBoxLastName.Text,
                    textBoxFirstName.Text,
                    textBoxMidleName.Text,
-                   $"{dtpBirthDate.Value.Year}-{dtpBirthDate.Value.Month}-{dtpBirthDate.Value.Day}",//dtpBirthDate.Value.ToString("yyyy-mm-dd"), no working
+                   dtpBirthDate.Value.ToString("yyyy-MM-dd"),
                    textBoxEmail.Text,
                    textBoxPhone.Text,
                    pictureBoxPhoto.Image
@@ -46,6 +46,15 @@ namespace Academy
         protected virtual void buttonOk_Click(object sender, EventArgs e)
         {
             Compress();
+        }
+
+        private void buttonBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Image files|*.png;*.jpg;*.jpeg;*.png;*.bmp";
+            fileDialog.ShowDialog();
+            if (string.IsNullOrEmpty(fileDialog.FileName)) return;
+            pictureBoxPhoto.Image = Image.FromFile(fileDialog.FileName);
         }
     }
 }

@@ -176,6 +176,7 @@
             this.pictureBoxPhoto.Location = new System.Drawing.Point(16, 9);
             this.pictureBoxPhoto.Name = "pictureBoxPhoto";
             this.pictureBoxPhoto.Size = new System.Drawing.Size(191, 160);
+            this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPhoto.TabIndex = 13;
             this.pictureBoxPhoto.TabStop = false;
             // 
@@ -188,6 +189,7 @@
             this.buttonBrowse.TabIndex = 14;
             this.buttonBrowse.Text = "Обзор";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // buttonOk
             // 

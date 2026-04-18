@@ -30,6 +30,8 @@
         {
             this.dtpWorkSince = new System.Windows.Forms.DateTimePicker();
             this.textBoxRate = new System.Windows.Forms.TextBox();
+            this.labelWorkSince = new System.Windows.Forms.Label();
+            this.labelRate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,14 +63,36 @@
             this.textBoxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.textBoxRate.Location = new System.Drawing.Point(474, 391);
             this.textBoxRate.Name = "textBoxRate";
-            this.textBoxRate.Size = new System.Drawing.Size(100, 39);
+            this.textBoxRate.Size = new System.Drawing.Size(190, 39);
             this.textBoxRate.TabIndex = 19;
+            // 
+            // labelWorkSince
+            // 
+            this.labelWorkSince.AutoSize = true;
+            this.labelWorkSince.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.labelWorkSince.Location = new System.Drawing.Point(130, 335);
+            this.labelWorkSince.Name = "labelWorkSince";
+            this.labelWorkSince.Size = new System.Drawing.Size(320, 37);
+            this.labelWorkSince.TabIndex = 20;
+            this.labelWorkSince.Text = "Дата начала работы:";
+            // 
+            // labelRate
+            // 
+            this.labelRate.AutoSize = true;
+            this.labelRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.labelRate.Location = new System.Drawing.Point(295, 391);
+            this.labelRate.Name = "labelRate";
+            this.labelRate.Size = new System.Drawing.Size(164, 37);
+            this.labelRate.TabIndex = 21;
+            this.labelRate.Text = "Зарплата:";
             // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 510);
+            this.Controls.Add(this.labelRate);
+            this.Controls.Add(this.labelWorkSince);
             this.Controls.Add(this.textBoxRate);
             this.Controls.Add(this.dtpWorkSince);
             this.Name = "TeacherForm";
@@ -92,6 +116,8 @@
             this.Controls.SetChildIndex(this.labelID, 0);
             this.Controls.SetChildIndex(this.dtpWorkSince, 0);
             this.Controls.SetChildIndex(this.textBoxRate, 0);
+            this.Controls.SetChildIndex(this.labelWorkSince, 0);
+            this.Controls.SetChildIndex(this.labelRate, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -102,5 +128,7 @@
 
         private System.Windows.Forms.DateTimePicker dtpWorkSince;
         private System.Windows.Forms.TextBox textBoxRate;
+        private System.Windows.Forms.Label labelWorkSince;
+        private System.Windows.Forms.Label labelRate;
     }
 }

@@ -44,7 +44,7 @@ namespace Academy.Models
         }
         public override string GetUpdateString()
         {
-            return base.GetUpdateString() + $",work_since=N'{work_since},rate={rate}'";
+            return base.GetUpdateString() + $",work_since=N'{work_since}',rate={rate}";
         }
     }
 }
