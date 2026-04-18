@@ -82,6 +82,12 @@ namespace Academy.Models
         {
             using (MemoryStream stream = new MemoryStream(imageBytes))
                 return Image.FromStream(stream);
+            
+            //Image image;
+            //MemoryStream stream = new MemoryStream(imageBytes);
+            //image = Image.FromStream(stream);
+            //stream.Close();
+            //return image;
         }
         public virtual string GetNames()
         {
