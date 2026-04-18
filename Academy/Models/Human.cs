@@ -25,8 +25,8 @@ namespace Academy.Models
         public Human
             (
                 int id,
-                string first_name, string midle_name,
-                string last_name, string birth_date,
+                string last_name, string first_name,
+                string midle_name, string birth_date,
                 string email, string phone, Image photo
             )
         {
@@ -69,8 +69,15 @@ namespace Academy.Models
         {
             string output = "";
             MemoryStream stream = new MemoryStream();
-            
-            image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+
+            try
+            {
+                image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             byte[] imageBytes = stream.ToArray();
             
             stream.Close();
