@@ -32,6 +32,7 @@ namespace Academy
         {
             base.Extract();
             cbStudentsGroups.SelectedValue = Convert.ToInt32(student.group);
+            
         }
         protected override void buttonOk_Click(object sender, EventArgs e)
         {

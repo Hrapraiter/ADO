@@ -33,6 +33,7 @@ namespace Academy
         protected override void buttonOk_Click(object sender, EventArgs e) 
         {
             base.buttonOk_Click(sender, e);
+
             decimal valid_decimal = Convert.ToDecimal
                 (
                     (valid_decimal = textBoxRate.Text.IndexOf(',')) != -1

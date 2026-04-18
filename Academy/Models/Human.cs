@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace Academy.Models
 {
@@ -47,6 +49,10 @@ namespace Academy.Models
             email = values[5].ToString();
             phone = values[6].ToString();
 
+            byte[] imageBytes = Convert.IsDBNull(values[7]) ? new byte[0] : (byte[])values[7];
+            if (imageBytes.Length < 1)return;
+            
+            photo = ConvertBytesToImage(imageBytes);
         }
         public Human(Human other)
         {
@@ -59,13 +65,31 @@ namespace Academy.Models
             this.phone = other.phone;
             this.photo = other.photo;
         }
+        protected string ConvertImageToHex(Image image) 
+        {
+            string output = "";
+            MemoryStream stream = new MemoryStream();
+            
+            image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+            byte[] imageBytes = stream.ToArray();
+            
+            stream.Close();
+
+            output = "0x" + BitConverter.ToString(imageBytes).Replace("-" , "");
+            return output;
+        }
+        protected Image ConvertBytesToImage(byte[] imageBytes) 
+        {
+            using (MemoryStream stream = new MemoryStream(imageBytes))
+                return Image.FromStream(stream);
+        }
         public virtual string GetNames()
         {
-            return "last_name,first_name,middle_name,birth_date,email,phone";
+            return "last_name,first_name,middle_name,birth_date,email,phone,photo";
         }
         public virtual string GetValues()
         {
-            return $"N'{last_name}',N'{first_name}',N'{middle_name}',N'{birth_date}',N'{email}',N'{phone}'";
+            return $"N'{last_name}',N'{first_name}',N'{middle_name}',N'{birth_date}',N'{email}',N'{phone}',{ConvertImageToHex(photo)}";
         }
         public virtual string GetUpdateString() 
         {
@@ -75,7 +99,8 @@ namespace Academy.Models
                 $"middle_name=N'{middle_name}'," +
                 $"birth_date=N'{birth_date}'," +
                 $"email=N'{email}'," +
-                $"phone=N'{phone}'";
+                $"phone=N'{phone}'," +
+                $"photo={ConvertImageToHex(photo)}";
         }
     }
 }
