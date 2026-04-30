@@ -18,6 +18,7 @@ namespace Academy
         public HumanForm()
         {
             InitializeComponent();
+            Console.WriteLine(this.GetType());
         }
         protected virtual void Compress() 
         {

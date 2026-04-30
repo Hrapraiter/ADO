@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Imaging;
+using System.Runtime.CompilerServices;
 
 namespace Academy.Models
 {
@@ -47,7 +49,6 @@ namespace Academy.Models
             birth_date = values[4].ToString();
             email = values[5].ToString();
             phone = values[6].ToString();
-
         }
         public Human(Human other)
         {
@@ -82,9 +83,10 @@ namespace Academy.Models
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                photo.Save(ms, photo.RawFormat);
+                photo.Save(ms, /*photo.RawFormat*/ImageFormat.Png);
                 return ms.ToArray();
             }
         }
+        
     }
 }

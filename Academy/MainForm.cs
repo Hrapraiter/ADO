@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using System.Configuration;
 using DBtools;
+using System.Runtime.InteropServices;
 
 namespace Academy
 {
@@ -38,6 +39,7 @@ namespace Academy
             };
         public MainForm()
         {
+            AllocConsole();
             InitializeComponent();
             connector = new Connector(ConfigurationManager.ConnectionStrings["PV_522_Import"].ConnectionString);
             dgvDirections.DataSource = connector.Select("SELECT * FROM Directions");
@@ -57,7 +59,8 @@ namespace Academy
 
             
         }
-
+        [DllImport("kernel32.dll")]
+        public static extern bool AllocConsole();
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             int i = (sender as TabControl).SelectedIndex;

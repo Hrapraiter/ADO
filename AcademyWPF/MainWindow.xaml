@@ -1,0 +1,28 @@
+﻿<Window x:Class="AcademyWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AcademyWPF"
+        mc:Ignorable="d"
+        Title="Academy WPF" Height="450" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <TabControl Name="tabControl" Grid.Row="0" SelectionChanged="tabControl_SelectionChanged">
+            <TabItem Name="tabStudents"      Header="Students">     <DataGrid Name="dgvStudents"    /> </TabItem>
+            <TabItem Name="tabGroups"        Header="Groups">       <DataGrid Name="dgvGroups"      /> </TabItem>
+            <TabItem Name="tabDirections"    Header="Directions">   <DataGrid Name="dgvDirections"  /> </TabItem>
+            <TabItem Name="tabDisciplines"   Header="Disciplines">  <DataGrid Name="dgvDisciplines" /> </TabItem>
+            <TabItem Name="tabTeachers"      Header="Teachers">     <DataGrid Name="dgvTeachers"    /> </TabItem>
+        </TabControl>
+        
+        <StatusBar Name="statusBar" Grid.Row="1">
+            <StatusBarItem>
+                <TextBlock Name="statusBarCount" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

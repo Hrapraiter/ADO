@@ -217,6 +217,5 @@ namespace DBtools
             }
             return photo;
         }
-
     }
 }
